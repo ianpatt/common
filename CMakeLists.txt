@@ -1,0 +1,99 @@
+cmake_minimum_required(VERSION 3.18)
+
+# ---- Project ----
+
+project(
+	common
+	VERSION 1.0.0
+	LANGUAGES CXX
+)
+
+# ---- Include guards ----
+
+if(PROJECT_SOURCE_DIR STREQUAL PROJECT_BINARY_DIR)
+	message(
+		FATAL_ERROR
+			"In-source builds not allowed. Please make a new directory (called a build directory) and run CMake from there."
+)
+endif()
+
+# ---- Add source files ----
+
+file(
+	GLOB_RECURSE
+	headers
+	CONFIGURE_DEPENDS
+	*.h
+)
+
+file(
+	GLOB_RECURSE
+	sources
+	CONFIGURE_DEPENDS
+	*.cpp
+)
+
+source_group(
+	TREE
+		${CMAKE_CURRENT_SOURCE_DIR}
+	FILES
+		${headers}
+		${sources}
+)
+
+# ---- Create library ----
+
+add_library(
+	${PROJECT_NAME}
+	STATIC
+	${headers}
+	${sources}
+)
+
+add_library(xse::${PROJECT_NAME} ALIAS ${PROJECT_NAME})
+
+target_compile_features(
+	${PROJECT_NAME}
+	PUBLIC
+		cxx_std_11
+)
+
+target_include_directories(
+	${PROJECT_NAME}
+	PUBLIC 
+		$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/..>
+		$<INSTALL_INTERFACE:/..>
+)
+
+target_precompile_headers(
+	${PROJECT_NAME}
+	PUBLIC
+		IPrefix.h
+)
+
+# ---- Create an installable target ----
+
+include(GNUInstallDirs)
+
+install(
+	TARGETS
+		${PROJECT_NAME}
+	EXPORT
+		${PROJECT_NAME}-targets
+)
+
+install(
+	FILES
+		${headers}
+	DESTINATION
+		${CMAKE_INSTALL_INCLUDEDIR}/${PROJECT_NAME}
+)
+
+install(
+	EXPORT
+		${PROJECT_NAME}-targets
+	NAMESPACE
+		xse::
+	DESTINATION
+		${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_NAME}
+)
