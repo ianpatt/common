@@ -20,17 +20,17 @@ endif()
 # ---- Add source files ----
 
 file(
-	GLOB_RECURSE
+	GLOB
 	headers
 	CONFIGURE_DEPENDS
-	*.h
+	common/*.h
 )
 
 file(
-	GLOB_RECURSE
+	GLOB
 	sources
 	CONFIGURE_DEPENDS
-	*.cpp
+	common/*.cpp
 )
 
 source_group(
