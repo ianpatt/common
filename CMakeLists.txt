@@ -61,14 +61,14 @@ target_compile_features(
 target_include_directories(
 	${PROJECT_NAME}
 	PUBLIC 
-		$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/..>
-		$<INSTALL_INTERFACE:/..>
+		$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
+		$<INSTALL_INTERFACE:>
 )
 
 target_precompile_headers(
 	${PROJECT_NAME}
 	PUBLIC
-		IPrefix.h
+		common/IPrefix.h
 )
 
 # ---- Create an installable target ----
