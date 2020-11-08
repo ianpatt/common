@@ -89,6 +89,19 @@ install(
 		${CMAKE_INSTALL_INCLUDEDIR}/${PROJECT_NAME}
 )
 
+configure_file(
+	cmake/config.cmake.in
+	${PROJECT_NAME}-config.cmake
+	@ONLY
+)
+
+install(
+	FILES
+		${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}-config.cmake
+	DESTINATION
+		${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_NAME}
+)
+
 install(
 	EXPORT
 		${PROJECT_NAME}-targets
