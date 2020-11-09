@@ -18,19 +18,8 @@ endif()
 
 # ---- Add source files ----
 
-file(
-	GLOB
-	headers
-	CONFIGURE_DEPENDS
-	common/*.h
-)
-
-file(
-	GLOB
-	sources
-	CONFIGURE_DEPENDS
-	common/*.cpp
-)
+include(cmake/headerlist.cmake)
+include(cmake/sourcelist.cmake)
 
 source_group(
 	${PROJECT_NAME}
