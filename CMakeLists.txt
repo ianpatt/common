@@ -2,6 +2,9 @@ cmake_minimum_required(VERSION 3.18)
 
 # ---- Project ----
 
+set(CMAKE_DEBUG_POSTFIX "d" CACHE STRING "")
+set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>" CACHE STRING "")
+
 project(
 	common
 	LANGUAGES CXX
