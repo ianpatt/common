@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.18)
 
 # ---- Project ----
 
+set(CMAKE_CXX_FLAGS_DEBUG "/D_DEBUG /Z7 /Ob0 /Od /RTC1" CACHE STRING "")
 set(CMAKE_DEBUG_POSTFIX "d" CACHE STRING "")
 set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>" CACHE STRING "")
 
