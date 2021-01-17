@@ -1,1 +1,15 @@
 build/*
+
+Debug VC9/*
+Debug/*
+Release VC9/*
+Release/*
+x64_v140/*
+x64_v142/*
+x64_vc11/*
+
+*.sdf
+*.suo
+*.db
+*.ncb
+*.user
