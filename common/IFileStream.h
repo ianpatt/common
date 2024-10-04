@@ -3,7 +3,7 @@
 #include "common/IDataStream.h"
 
 /**
- *	An input file stream
+ *	An input/output file stream
  */
 class IFileStream : public IDataStream
 {
@@ -12,22 +12,22 @@ class IFileStream : public IDataStream
 		IFileStream(const char * name);
 		~IFileStream();
 
-		bool	Open(const char * name);
-		bool	BrowseOpen(void);
+		virtual bool	Open(const char * name);
+		bool			BrowseOpen(void);
 
-		bool	Create(const char * name);
-		bool	BrowseCreate(const char * defaultName = NULL, const char * defaultPath = NULL, const char * title = NULL);
+		virtual bool	Create(const char * name);
+		bool			BrowseCreate(const char * defaultName = NULL, const char * defaultPath = NULL, const char * title = NULL);
 
-		void	Close(void);
+		virtual void	Close(void);
 
-		HANDLE	GetHandle(void)	{ return theFile; }
+		HANDLE			GetHandle(void)	{ return theFile; }
 
 		virtual void	ReadBuf(void * buf, UInt32 inLength);
 		virtual void	WriteBuf(const void * buf, UInt32 inLength);
 		virtual void	SetOffset(SInt64 inOffset);
 
 		// can truncate. implicitly seeks to the end of the file
-		void	SetLength(UInt64 length);
+		virtual void	SetLength(UInt64 length);
 
 		static void	MakeAllDirs(const char * path);
 		static char * ExtractFileName(char * path);

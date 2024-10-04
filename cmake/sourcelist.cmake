@@ -1,5 +1,6 @@
 set(sources
 	common/IArchive.cpp
+	common/IBufferedFileStream.cpp
 	common/IBufferStream.cpp
 	common/IConsole.cpp
 	common/IDataStream.cpp
