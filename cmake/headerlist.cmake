@@ -1,5 +1,6 @@
 set(headers
 	common/IArchive.h
+	common/IBufferedFileStream.h
 	common/IBufferStream.h
 	common/IConsole.h
 	common/ICriticalSection.h
