@@ -2,32 +2,30 @@
 
 #include "common/IDataStream.h"
 #include "common/IFileStream.h"
+#include <vector>
 
 /**
  *	An input/output file stream with buffering, write file on close
  */
-class IBufferedFileStream : public IFileStream
+class IBufferedFileStream : public IDataStream
 {
 public:
 	IBufferedFileStream();
 	virtual ~IBufferedFileStream();
 
-	virtual bool	Open(const char* name);
-	virtual bool	Create(const char* name);
+	bool	Open(const char* name);
+	bool	Create(const char* name);
 
-	virtual void	Close(void);
+	void	Close(void);
 
 	virtual void	ReadBuf(void* buf, UInt32 inLength);
 	virtual void	WriteBuf(const void* buf, UInt32 inLength);
-	virtual void	SetOffset(SInt64 inOffset);
 
-	virtual void	SetLength(UInt64 length);
+	void	SetLength(UInt64 length);
 
 private:
-	void	ReallocateStreamBuffer(UInt64 length);
-	UInt64	CalculateStreamBufferLength(UInt64 length);
+	std::vector<UInt8>	streamBuffer;
+	IFileStream			streamFile;
 
-	UInt8* streamBuffer = nullptr;
-	UInt64	streamBufferLength = 0;
 	bool	streamBufferHasWrite = false;
 };
