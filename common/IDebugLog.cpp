@@ -59,7 +59,7 @@ void IDebugLog::OpenRelative(int folderID, const char * relPath)
 	HRESULT err = SHGetFolderPath(NULL, folderID | CSIDL_FLAG_CREATE, NULL, SHGFP_TYPE_CURRENT, path);
 	if(!SUCCEEDED(err))
 	{
-		if(err == ERROR_ACCESS_DENIED)
+		if(err == E_ACCESSDENIED)
 		{
 			MessageBox(nullptr, "Windows Defender Controlled Folder Access is probably blocking access to game config files. Fix your system.", "Script Extender", MB_OK | MB_ICONSTOP);
 			ExitProcess(0);
