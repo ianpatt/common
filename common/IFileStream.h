@@ -3,7 +3,7 @@
 #include "common/IDataStream.h"
 
 /**
- *	An input file stream
+ *	An input/output file stream
  */
 class IFileStream : public IDataStream
 {
