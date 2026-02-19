@@ -10,7 +10,7 @@ class IFileStream : public IDataStream
 	public:
 		IFileStream();
 		IFileStream(const char * name);
-		~IFileStream();
+		virtual ~IFileStream();
 
 		bool	Open(const char * name);
 		bool	BrowseOpen(void);
