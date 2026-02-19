@@ -1,11 +1,12 @@
 #include "common/IErrors.h"
 #include "common/IDebugLog.h"
 #include <cstdlib>
+#include <intrin.h>
 
 __declspec(noreturn) static void IErrors_Halt(void)
 {
 	// crash
-	*((int *)0) = 0xDEADBEEF;
+	__ud2();
 }
 
 /**
