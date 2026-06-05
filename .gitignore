@@ -13,3 +13,5 @@ x64_vc11/*
 *.db
 *.ncb
 *.user
+
+extern/

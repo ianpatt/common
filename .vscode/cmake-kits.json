@@ -1,0 +1,24 @@
+[
+    {
+        "name": "MSVC Wine (x64) via /opt/msvc",
+        "visualStudioArchitecture": "amd64",
+        "compilers": {
+            "C": "/opt/msvc/bin/x64/cl",
+            "CXX": "/opt/msvc/bin/x64/cl"
+        },
+        "environmentVariables": {
+            "PATH": "/opt/msvc/bin/x64:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+        }
+    },
+    {
+        "name": "MSVC Wine (x86) via /opt/msvc",
+        "visualStudioArchitecture": "x86",
+        "compilers": {
+            "C": "/opt/msvc/bin/x86/cl",
+            "CXX": "/opt/msvc/bin/x86/cl"
+        },
+        "environmentVariables": {
+            "PATH": "/opt/msvc/bin/x86:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+        }
+    }
+]

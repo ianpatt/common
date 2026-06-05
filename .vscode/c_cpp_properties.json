@@ -1,0 +1,33 @@
+{
+    "configurations": [
+        {
+            "name": "MSVC-Wine",
+            "compilerPath": "/opt/msvc/bin/x64/cl",
+            "intelliSenseMode": "windows-msvc-x64",
+            "browse": {
+                "path": [
+                    "/opt/msvc/include",
+                    "/opt/msvc/msvc/include",
+                    "/opt/msvc/sdks/WindowsKit/Include/**"
+                ],
+                "limitSymbolsToIncludedHeaders": true
+            },
+            "includePath": [
+                "${workspaceFolder}/**",
+                "/opt/msvc/include",
+                "/opt/msvc/msvc/include",
+                "/opt/msvc/Windows Kits/10/Include/**"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE",
+                "_WIN32",
+                "_WIN64"
+            ],
+            "cStandard": "c17",
+            "cppStandard": "c++17"
+        }
+    ],
+    "version": 4
+}

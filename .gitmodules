@@ -1,0 +1,3 @@
+[submodule ".devcontainer/msvc-wine"]
+	path = .devcontainer/msvc-wine
+	url = https://github.com/mstorsjo/msvc-wine.git

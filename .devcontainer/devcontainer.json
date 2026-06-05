@@ -1,0 +1,19 @@
+{
+  "name": "MSVC unter Wine",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-vscode.cpptools",
+        "ms-vscode.cmake-tools"
+      ]
+    }
+  },
+  "containerEnv": {
+    "PATH": "/opt/msvc/bin/x64:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+    "CC": "cl",
+    "CXX": "cl"
+  }
+}
