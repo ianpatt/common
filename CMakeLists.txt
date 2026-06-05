@@ -2,9 +2,16 @@ cmake_minimum_required(VERSION 3.18)
 
 # ---- Project ----
 
-set(CMAKE_CXX_FLAGS_DEBUG "/D_DEBUG /Z7 /Ob0 /Od /RTC1" CACHE STRING "")
-set(CMAKE_DEBUG_POSTFIX "d" CACHE STRING "")
-set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>" CACHE STRING "")
+if(WIN32)
+    if(MSVC)
+        # Nativer Windows-Build mit MSVC Compiler
+        set(CMAKE_CXX_FLAGS_DEBUG "/D_DEBUG /Z7 /Ob0 /Od /RTC1" CACHE STRING "" FORCE)
+		set(CMAKE_DEBUG_POSTFIX "d" CACHE STRING "")
+		set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>" CACHE STRING "")
+    elseif(MINGW)
+         set(CMAKE_CXX_FLAGS_DEBUG "-g -O0 -D_DEBUG" CACHE STRING "" FORCE)
+    endif()
+endif()
 
 project(
 	common
@@ -55,6 +62,15 @@ target_include_directories(
 		$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
 		$<INSTALL_INTERFACE:include>
 )
+if(WIN32)
+	if(MINGW)
+		target_include_directories(
+			${PROJECT_NAME}
+			PRIVATE
+			"${CMAKE_SOURCE_DIR}"
+		)
+	endif()
+endif()
 
 target_precompile_headers(
 	${PROJECT_NAME}

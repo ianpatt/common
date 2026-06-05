@@ -8,10 +8,10 @@
 // 4288 - disable warning for crap microsoft extension screwing up the scope of variables defined in for loops
 // 4311 - pointer truncation
 // 4312 - pointer extension
-#pragma warning(disable: 4018 4200 4244 4267 4305 4288 4312 4311)
+#pragma warning(disable : 4018 4200 4244 4267 4305 4288 4312 4311)
 
 // need win8 for windows store APIs
-#define _WIN32_WINNT	0x0602
+#define _WIN32_WINNT 0x0602
 
 #include <cstdlib>
 #include <cstdio>
@@ -23,4 +23,8 @@
 #include "common/IDebugLog.h"
 #include "common/ISingleton.h"
 #include <winsock2.h>
+#ifdef __MINGW32__
+#include <windows.h>
+#else
 #include <Windows.h>
+#endif
